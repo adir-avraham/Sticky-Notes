@@ -1,18 +1,17 @@
 body {
     background-image: url("Images/corkboard.jpg");
+    font-family: cursive;
 
 }
+
 
 .header {
-  
     font-size: 3em;
-    font-family: cursive;
-    
 }
+
 
 
 .form-img {
     background-image: url("Images/notebook_paper.jpg");
-    
 
 }
