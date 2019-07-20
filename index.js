@@ -50,47 +50,48 @@ function createTask(task) {
     if (!task_name || !task_description || !task_date || !task_time) return;
 
     const divElement = document.createElement("div");
-    const ul = document.createElement("ul");
+    const cardBody = document.createElement("div")
 
-    divElement.appendChild(ul);
-    divElement.className = "col-lg-2 mb-4"
-    divElement.style = "font-size: 0.8em";
 
-    ul.className = "card list-group list-group-flush";
-    ul.id = task_name;
+    divElement.className = "card bg-card m-3 col-lg-3";
+    divElement.style = "max-width: 18rem";
+    divElement.appendChild(cardBody);
+    
+    cardBody.className = "card-body";
+
+    const card_task_name = document.createElement("h3");
+    card_task_name.innerText = task_name;
+    card_task_name.className = "card-title";
+
+    const card_task_description = document.createElement("p");
+    card_task_description.innerText = task_description;
+    //overflow is not working
+    card_task_description.className = "card-text overflow-auto";
+    
+    const card_task_date = document.createElement("footer");
+    card_task_date.innerText = task_date;
+
+    const card_task_time = document.createElement("footer");
+    card_task_time.innerText = task_time;
+
+
+
+    cardBody.id = task_name;
 
     Card.className = "row mt-5";
 
     const deleteButton = document.createElement("Button")
     deleteButton.innerText = "X";
     deleteButton.className = "btn btn-danger button-no-paddind";
+    //const spanTrash = document.createElement("span");
+    //spanTrash.className = "glyphicon glyphicon-trash";
+    //deleteButton.append(spanTrash);
     deleteButton.addEventListener("click", deleteTaskHandler);
 
+    const card_delete_button = document.createElement("p");
+    card_delete_button.append(deleteButton);
 
-
-    const li_task_name = document.createElement("li");
-    li_task_name.innerText = task_name;
-    li_task_name.className = "list-group-item font-weight-bold";
-    li_task_name.style = "font-size:1.2em cards-padding";
-
-    const li_task_description = document.createElement("li");
-    li_task_description.innerText = task_description;
-    li_task_description.className = "list-group-item cards-padding";
-
-
-    const li_task_date = document.createElement("li");
-    li_task_date.innerText = "Date: " + task_date;
-    li_task_date.className = "list-group-item cards-padding";
-
-    const li_task_time = document.createElement("li");
-    li_task_time.innerText = "Time: " + task_time;
-    li_task_time.className = "list-group-item cards-padding";
-
-    const li_delete_button = document.createElement("li");
-    li_delete_button.className = "list-group-item cards-padding";
-    li_delete_button.append(deleteButton);
-
-    ul.append(li_task_name, li_task_description, li_task_date, li_task_time, li_delete_button);
+    cardBody.append( card_task_name , card_task_description, card_task_date, card_task_time, card_delete_button);
 
     return divElement;
 }
@@ -105,6 +106,16 @@ function validateTaskName(name) {
 
 
 document.querySelector("#addButton").addEventListener("click", saveTask);
+
+// document.querySelector("#addButton").addEventListener("click", () => {
+//  saveTask();
+//  resetForm();
+// });
+
+// function resetForm() {
+//     document.querySelector("myForm").reset();
+// }
+
 
 function saveTask() {
     const { task_name, task_description, task_date, task_time } = TASKS_DOM;

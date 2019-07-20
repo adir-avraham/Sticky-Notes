@@ -12,36 +12,36 @@
         <nav class="header font-weight-bold text-center">
             My Task Board
         </nav>
-        <form class="mt-5 form-img py-3 px-2">
+        <form id="myForm" class="mt-5 form-img py-3 px-2">
             <div class="form-row">
                 <div class="form-group col-lg-3">
                     <label for="inputTaskName">Task</label>
-                    <input type="text" class="form-control" id="inputTaskName" placeholder="Enter Task">
+                    <input type="text" class="form-control" id="inputTaskName" placeholder="Enter Task" required>
                 </div>
                 <div class="form-group col-lg-2">
                     <label for="inputDate">Last date</label>
-                    <input type="date" class="form-control" id="inputDate" placeholder="Enter Date">
+                    <input type="date" class="form-control" id="inputDate" placeholder="Enter Date" required>
                 </div>
                 <div class="form-group col-lg-2">
                     <label for="inputTime">Time</label>
-                    <input type="time" class="form-control" id="inputTime" placeholder="Enter Time">
+                    <input type="time" class="form-control" id="inputTime" placeholder="Enter Time" required>
                 </div>
                 <div class="form-group col-lg-5">
                     <label for="inputDescription">Description</label>
                     <textarea class="form-control" id="inputDescription" rows="1"
-                        placeholder="Enter Description"></textarea>
+                        placeholder="Enter Description" required></textarea>
                 </div>
             </div>
             <button id="addButton" type="button" class="btn btn-primary">+ Add New Task</button>
-            <button type="reset" class="btn btn-danger">Clear</button>
+            <button type="reset" class="btn btn-danger">Clear Form</button>
         </form>
 
         <div id="Card">
 
+
         </div>
 
-    </div>
-
+     
 
     <script src="index.js"></script>
     <script src="functions.js"></script>
