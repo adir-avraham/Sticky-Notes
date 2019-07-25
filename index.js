@@ -59,13 +59,18 @@ function createTask(task) {
     
     cardBody.className = "card-body";
 
+    const deleteButton = document.createElement("Button")
+    deleteButton.className = "btn btn-danger button-no-paddind far fa-trash-alt float-right";
+    deleteButton.addEventListener("click", deleteTaskHandler);
+
+
     const card_task_name = document.createElement("h3");
     card_task_name.innerText = task_name;
     card_task_name.className = "card-title";
+    card_task_name.append(deleteButton);
 
     const card_task_description = document.createElement("p");
     card_task_description.innerText = task_description;
-    //overflow is not working
     card_task_description.className = "card-text overflow-auto";
     
     const card_task_date = document.createElement("footer");
@@ -80,18 +85,11 @@ function createTask(task) {
 
     Card.className = "row mt-5";
 
-    const deleteButton = document.createElement("Button")
-    deleteButton.innerText = "X";
-    deleteButton.className = "btn btn-danger button-no-paddind";
-    //const spanTrash = document.createElement("span");
-    //spanTrash.className = "glyphicon glyphicon-trash";
-    //deleteButton.append(spanTrash);
-    deleteButton.addEventListener("click", deleteTaskHandler);
 
-    const card_delete_button = document.createElement("p");
-    card_delete_button.append(deleteButton);
+    //const card_delete_button = document.createElement("p");
+    //card_delete_button.append(deleteButton);
 
-    cardBody.append( card_task_name , card_task_description, card_task_date, card_task_time, card_delete_button);
+    cardBody.append( card_task_name , card_task_description, card_task_date, card_task_time);
 
     return divElement;
 }
