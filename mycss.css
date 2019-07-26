@@ -19,7 +19,7 @@ body {
   }
 
 
-  .bg-card {
+.bg-card {
     background-image: url("Images/sticky-note.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -29,4 +29,17 @@ body {
 
 .card-text {
     height: 130px;
+}
+
+.fade-in {
+animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+to {
+    opacity: 1;
+}
 }

@@ -53,9 +53,9 @@ function createTask(task) {
     const cardBody = document.createElement("div")
 
 
-    divElement.className = "card bg-card m-3 col-lg-3";
+    divElement.className = "card bg-card m-3 col-lg-3 fade-in";
     divElement.style = "max-width: 18rem";
-    divElement.appendChild(cardBody);
+    divElement.append(cardBody);
     
     cardBody.className = "card-body";
 
