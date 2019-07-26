@@ -6,7 +6,9 @@ const TASKS_DOM = {
     tasks_data: document.getElementById("Card")
 }
 
+
 let arrayOfData;
+
 
 function draw(arrayOfData) {
     clearTask()
@@ -15,9 +17,11 @@ function draw(arrayOfData) {
     }
 }
 
+
 function clearTask() {
     TASKS_DOM.tasks_data.innerHTML = "";
 }
+
 
 function drawLi(task) {
     const { tasks_data } = TASKS_DOM;
@@ -25,6 +29,7 @@ function drawLi(task) {
     if (!taskUL) return;
     tasks_data.append(taskUL);
 }
+
 
 function deleteTask(id) {
     const index = findIndex(arrayOfData, id);
@@ -42,7 +47,6 @@ function findIndex(data, id) {
         }
     }
 }
-
 
 
 function createTask(task) {
@@ -86,9 +90,6 @@ function createTask(task) {
     Card.className = "row mt-5";
 
 
-    //const card_delete_button = document.createElement("p");
-    //card_delete_button.append(deleteButton);
-
     cardBody.append( card_task_name , card_task_description, card_task_date, card_task_time);
 
     return divElement;
@@ -118,22 +119,17 @@ document.querySelector("#addButton").addEventListener("click", saveTask);
 function saveTask() {
     const { task_name, task_description, task_date, task_time } = TASKS_DOM;
 
-    const result = validateTaskName(task_name.value);
-    if (result !== undefined) {
-        alert("Task Exist")
-        return;
-    }
-
     arrayOfData.push(new Task(task_name.value, task_description.value, task_date.value, task_time.value))
     saveToLocalStorage("tasksData", arrayOfData)
     draw(arrayOfData)
 
-
 }
+
 
 function saveToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
+
 
 function Task(_name, _description, _date, _time) {
     this.task_name = _name;
@@ -141,6 +137,7 @@ function Task(_name, _description, _date, _time) {
     this.task_date = _date;
     this.task_time = _time;
 }
+
 
 function init() {
     arrayOfData = JSON.parse(localStorage.getItem("tasksData")) || []
