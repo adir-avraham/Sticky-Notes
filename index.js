@@ -53,7 +53,7 @@ function createTask(task) {
     const cardBody = document.createElement("div")
 
 
-    divElement.className = "card bg-card m-3 col-lg-3";
+    divElement.className = "card bg-card m-3 ml-5 col-lg-3";
     divElement.style = "max-width: 18rem";
     divElement.appendChild(cardBody);
     
