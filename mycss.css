@@ -3,39 +3,37 @@ body {
     font-family: cursive;
 }
 
-
 .header {
     font-size: 3em;
 }
 
-
 .form-img {
     background-image: url("Images/notebook_paper.jpg");
+    border-radius: 3px;
 }
 
-
-.cards-padding {
-    padding: 0.15rem 0.5rem;
+  .card-title {
+      margin-top: 0.7em;
   }
 
-
-  .bg-card {
-    background-image: url("Images/sticky-note.jpg");
+  .sticky-note {
+    background-image: url("Images/sticky-note-png.png");
     background-size: 100%;
     background-repeat: no-repeat;
     height: 286px;
 }
 
-
 .card-text {
     height: 130px;
 }
 
-.card:hover {
-border: 3px solid rgb(39, 37, 37);
+.card-hover:hover {
 opacity: 1;
+transition: 0.5s;
 }
 
-/* .card {
+.card-hover {
     opacity: 0.7;
-} */
+} 
+
+

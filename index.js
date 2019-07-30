@@ -53,7 +53,7 @@ function createTask(task) {
     const cardBody = document.createElement("div")
 
 
-    divElement.className = "card bg-card m-3 ml-5 col-lg-3";
+    divElement.className = "card-hover sticky-note m-3 ml-5 col-lg-3";
     divElement.style = "max-width: 18rem";
     divElement.appendChild(cardBody);
     
@@ -80,14 +80,11 @@ function createTask(task) {
     card_task_time.innerText = task_time;
 
 
-
     cardBody.id = task_name;
 
     Card.className = "row mt-5";
 
 
-    //const card_delete_button = document.createElement("p");
-    //card_delete_button.append(deleteButton);
 
     cardBody.append( card_task_name , card_task_description, card_task_date, card_task_time);
 
@@ -105,14 +102,6 @@ function validateTaskName(name) {
 
 document.querySelector("#addButton").addEventListener("click", saveTask);
 
-// document.querySelector("#addButton").addEventListener("click", () => {
-//  saveTask();
-//  resetForm();
-// });
-
-// function resetForm() {
-//     document.querySelector("myForm").reset();
-// }
 
 
 function saveTask() {
