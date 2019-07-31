@@ -3,10 +3,13 @@ const TASKS_DOM = {
     task_description: document.getElementById("inputDescription"),
     task_date: document.getElementById("inputDate"),
     task_time: document.getElementById("inputTime"),
-    tasks_data: document.getElementById("Card")
+    tasks_data: document.getElementById("Card"),
+    task_form: document.getElementById("myForm")
 }
 
+
 let arrayOfData;
+
 
 function draw(arrayOfData) {
     clearTask()
@@ -15,9 +18,11 @@ function draw(arrayOfData) {
     }
 }
 
+
 function clearTask() {
     TASKS_DOM.tasks_data.innerHTML = "";
 }
+
 
 function drawLi(task) {
     const { tasks_data } = TASKS_DOM;
@@ -25,6 +30,7 @@ function drawLi(task) {
     if (!taskUL) return;
     tasks_data.append(taskUL);
 }
+
 
 function deleteTask(id) {
     const index = findIndex(arrayOfData, id);
@@ -44,7 +50,6 @@ function findIndex(data, id) {
 }
 
 
-
 function createTask(task) {
     const { task_name, task_description, task_date, task_time } = task;
     if (!task_name || !task_description || !task_date || !task_time) return;
@@ -52,10 +57,11 @@ function createTask(task) {
     const divElement = document.createElement("div");
     const cardBody = document.createElement("div")
 
-
     divElement.className = "card-hover sticky-note m-3 ml-5 col-lg-3";
+
+
     divElement.style = "max-width: 18rem";
-    divElement.appendChild(cardBody);
+    divElement.append(cardBody);
     
     cardBody.className = "card-body";
 
@@ -84,8 +90,6 @@ function createTask(task) {
 
     Card.className = "row mt-5";
 
-
-
     cardBody.append( card_task_name , card_task_description, card_task_date, card_task_time);
 
     return divElement;
@@ -107,22 +111,18 @@ document.querySelector("#addButton").addEventListener("click", saveTask);
 function saveTask() {
     const { task_name, task_description, task_date, task_time } = TASKS_DOM;
 
-    const result = validateTaskName(task_name.value);
-    if (result !== undefined) {
-        alert("Task Exist")
-        return;
-    }
-
     arrayOfData.push(new Task(task_name.value, task_description.value, task_date.value, task_time.value))
     saveToLocalStorage("tasksData", arrayOfData)
     draw(arrayOfData)
-
+    TASKS_DOM.task_form.reset();
 
 }
+
 
 function saveToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
+
 
 function Task(_name, _description, _date, _time) {
     this.task_name = _name;
@@ -131,8 +131,11 @@ function Task(_name, _description, _date, _time) {
     this.task_time = _time;
 }
 
+
 function init() {
     arrayOfData = JSON.parse(localStorage.getItem("tasksData")) || []
     draw(arrayOfData)
 }
 init();
+
+console.log(arrayOfData)
