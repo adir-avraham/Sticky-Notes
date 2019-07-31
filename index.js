@@ -3,7 +3,8 @@ const TASKS_DOM = {
     task_description: document.getElementById("inputDescription"),
     task_date: document.getElementById("inputDate"),
     task_time: document.getElementById("inputTime"),
-    tasks_data: document.getElementById("Card")
+    tasks_data: document.getElementById("Card"),
+    task_form: document.getElementById("myForm")
 }
 
 
@@ -122,6 +123,7 @@ function saveTask() {
     arrayOfData.push(new Task(task_name.value, task_description.value, task_date.value, task_time.value))
     saveToLocalStorage("tasksData", arrayOfData)
     draw(arrayOfData)
+    TASKS_DOM.task_form.reset();
 
 }
 
@@ -144,3 +146,5 @@ function init() {
     draw(arrayOfData)
 }
 init();
+
+console.log(arrayOfData)
