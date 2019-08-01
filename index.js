@@ -111,6 +111,12 @@ document.querySelector("#addButton").addEventListener("click", saveTask);
 function saveTask() {
     const { task_name, task_description, task_date, task_time } = TASKS_DOM;
 
+    const result = validateTaskName(task_name.value);
+    if (result !== undefined) {
+        alert("Task Exist")
+        return;
+    }
+
     arrayOfData.push(new Task(task_name.value, task_description.value, task_date.value, task_time.value))
     saveToLocalStorage("tasksData", arrayOfData)
     draw(arrayOfData)
