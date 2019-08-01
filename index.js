@@ -52,14 +52,11 @@ function findIndex(data, id) {
 
 function createTask(task) {
     const { task_name, task_description, task_date, task_time } = task;
-    if (!task_name || !task_description || !task_date || !task_time) return;
 
     const divElement = document.createElement("div");
     const cardBody = document.createElement("div")
 
     divElement.className = "card-hover sticky-note m-3 ml-5 col-lg-3";
-
-
     divElement.style = "max-width: 17rem";
     divElement.append(cardBody);
     
@@ -68,7 +65,6 @@ function createTask(task) {
     const deleteButton = document.createElement("Button")
     deleteButton.className = "btn btn-danger button-no-paddind far fa-trash-alt float-right";
     deleteButton.addEventListener("click", deleteTaskHandler);
-
 
     const card_task_name = document.createElement("h3");
     card_task_name.innerText = task_name;
@@ -85,7 +81,6 @@ function createTask(task) {
     const card_task_time = document.createElement("footer");
     card_task_time.innerText = task_time;
 
-
     cardBody.id = task_name;
 
     Card.className = "row mt-5";
@@ -95,9 +90,11 @@ function createTask(task) {
     return divElement;
 }
 
+
 function deleteTaskHandler() {
     deleteTask(this.parentElement.parentElement.id);
 }
+
 
 function validateTaskName(name) {
     return findIndex(arrayOfData, name);
@@ -107,10 +104,12 @@ function validateTaskName(name) {
 document.querySelector("#addButton").addEventListener("click", saveTask);
 
 
-
 function saveTask() {
     const { task_name, task_description, task_date, task_time } = TASKS_DOM;
-
+    if (!task_name.value || !task_description.value || !task_date.value || !task_time.value) {
+        alert("Please fill out the form")
+       return;
+    }
     const result = validateTaskName(task_name.value);
     if (result !== undefined) {
         alert("Task Exist")
@@ -121,7 +120,6 @@ function saveTask() {
     saveToLocalStorage("tasksData", arrayOfData)
     draw(arrayOfData)
     TASKS_DOM.task_form.reset();
-
 }
 
 
