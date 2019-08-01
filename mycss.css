@@ -24,7 +24,8 @@ body {
 }
 
 .card-text {
-    height: 130px;
+    height: 115px;
+    margin-bottom: 0.8em;
 }
 
 .card-hover:hover {

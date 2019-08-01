@@ -60,7 +60,7 @@ function createTask(task) {
     divElement.className = "card-hover sticky-note m-3 ml-5 col-lg-3";
 
 
-    divElement.style = "max-width: 18rem";
+    divElement.style = "max-width: 17rem";
     divElement.append(cardBody);
     
     cardBody.className = "card-body";
