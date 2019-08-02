@@ -52,15 +52,12 @@ function findIndex(data, id) {
 
 function createTask(task) {
     const { task_name, task_description, task_date, task_time } = task;
-
-    const divElement = document.createElement("div");
-    const cardBody = document.createElement("div")
-
-    divElement.className = "card-hover sticky-note m-3 ml-5 col-lg-3";
-    divElement.style = "max-width: 17rem";
-    divElement.append(cardBody);
     
-    cardBody.className = "card-body";
+    const divElement = document.createElement("div");
+
+    divElement.className = "mt-5 card-body card-hover sticky-note m-3 ml-5 col-lg-3";
+    divElement.style = "max-width: 17rem";
+
 
     const deleteButton = document.createElement("Button")
     deleteButton.className = "btn btn-danger button-no-paddind far fa-trash-alt float-right";
@@ -81,11 +78,9 @@ function createTask(task) {
     const card_task_time = document.createElement("footer");
     card_task_time.innerText = task_time;
 
-    cardBody.id = task_name;
+    divElement.id = task_name;
 
-    Card.className = "row mt-5";
-
-    cardBody.append( card_task_name , card_task_description, card_task_date, card_task_time);
+    divElement.append( card_task_name , card_task_description, card_task_date, card_task_time);
 
     return divElement;
 }
