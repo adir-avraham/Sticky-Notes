@@ -37,4 +37,15 @@ transition: 0.5s;
     opacity: 1;
 } 
 
-
+.fade-in {
+    animation: fadeIn 5s;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+    to {
+        opacity: 1;
+    }
+    }

@@ -14,6 +14,11 @@ let arrayOfData;
 function draw(arrayOfData) {
     clearTask()
     for (let index = 0; index < arrayOfData.length; index++) {
+        // const lastNote = arrayOfData [arrayOfData.length - 1]
+        // if (arrayOfData[index] === lastNote) {
+
+        // } else
+  
         drawLi(arrayOfData[index]);
     }
 }
@@ -28,7 +33,19 @@ function drawLi(task) {
     const { tasks_data } = TASKS_DOM;
     const taskUL = createTask(task);
     if (!taskUL) return;
+    // for (let index = 0; index < task.length; index++) {
+    //     const lastNote = task [task.length - 1]
+    //      if (task[index] === task[lastNote]) {
+    //         taskUL.className = "fade-in";
+    //         console.log(task[index]);
+    //         console.log(task[lastNote]);
+    
+    //     }
+    //     }
+    //   //  taskUL.className = "fade-in";
     tasks_data.append(taskUL);
+    // console.log(taskUL);
+
 }
 
 
@@ -141,4 +158,4 @@ function init() {
 }
 init();
 
-console.log(arrayOfData)
+console.log(arrayOfData);
