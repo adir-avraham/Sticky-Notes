@@ -57,10 +57,16 @@ function createTask(task) {
 
     divElement.className = "mt-5 card-body card-hover sticky-note m-3 ml-5 col-lg-3";
     divElement.style = "max-width: 17rem";
-
+    divElement.addEventListener("mouseover", function(){
+    deleteButton.style.display = "inline-block";
+    })      
+    divElement.addEventListener("mouseleave", function(){
+    deleteButton.style.display = "none";
+    })
 
     const deleteButton = document.createElement("Button")
     deleteButton.className = "btn btn-danger button-no-paddind far fa-trash-alt float-right";
+    deleteButton.style.display = "none";  
     deleteButton.addEventListener("click", deleteTaskHandler);
 
     const card_task_name = document.createElement("h3");
