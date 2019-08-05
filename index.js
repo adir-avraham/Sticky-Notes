@@ -68,7 +68,7 @@ function findIndex(data, id) {
 
 
 function createTask(task) {
-    const { task_name, task_description, task_date, task_time } = task;
+    const { task_name, task_description, task_date, task_time, completeMode } = task;
     
     const divElement = document.createElement("div");
 
@@ -92,7 +92,15 @@ function createTask(task) {
     const card_task_description = document.createElement("p");
     card_task_description.innerText = task_description;
     card_task_description.className = "card-text overflow-auto";
-    
+
+    const completeModeBox = document.createElement("input");
+    completeModeBox.className = "form-check-input";
+    completeModeBox.setAttribute("type", "checkbox");
+    completeModeBox.id = "defaultCheck1";
+    if (!completeMode) {
+    divElement.classList.add("invisible");
+    }
+
     const card_task_date = document.createElement("footer");
     card_task_date.innerText = task_date;
 
@@ -101,7 +109,7 @@ function createTask(task) {
 
     divElement.id = task_name;
 
-    divElement.append( card_task_name , card_task_description, card_task_date, card_task_time);
+    divElement.append( card_task_name , card_task_description, card_task_date, card_task_time, completeModeBox);
 
     return divElement;
 }
@@ -149,6 +157,7 @@ function Task(_name, _description, _date, _time) {
     this.task_description = _description;
     this.task_date = _date;
     this.task_time = _time;
+    this.completeMode = false;
 }
 
 
