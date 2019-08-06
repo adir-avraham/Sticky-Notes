@@ -1,10 +1,13 @@
+
 const TASKS_DOM = {
     task_name: document.getElementById("inputTaskName"),
     task_description: document.getElementById("inputDescription"),
     task_date: document.getElementById("inputDate"),
     task_time: document.getElementById("inputTime"),
     tasks_data: document.getElementById("Card"),
-    task_form: document.getElementById("myForm")
+    task_form: document.getElementById("myForm"),
+    taskNameMessage: document.getElementById("taskNameMessage"),
+    add_button: document.getElementById("addButton")
 }
 
 
@@ -100,7 +103,14 @@ function validateTaskName(name) {
 }
 
 
-document.querySelector("#addButton").addEventListener("click", saveTask);
+document.querySelector("#addButton").addEventListener("click",() =>{
+    
+    validateName2() 
+
+    saveTask()
+ 
+}) 
+
 
 
 function saveTask() {
@@ -122,6 +132,8 @@ function saveTask() {
 }
 
 
+
+
 function saveToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
@@ -133,6 +145,40 @@ function Task(_name, _description, _date, _time) {
     this.task_date = _date;
     this.task_time = _time;
 }
+
+const isError = { task_name: true }
+TASKS_DOM.task_name.addEventListener("input", function (event) {
+    isError.task_name = true;
+    resetErrors();
+    const { value } = event.currentTarget;
+    if (!value) return raiseMessage(TASKS_DOM.taskNameMessage, "", true);
+    const nameValidationResult = validateName(value);
+    if (!nameValidationResult) {
+        isError.task_name = false;
+        return raiseMessage(TASKS_DOM.taskNameMessage, "*Task can't contain numbers", true);
+    }
+});
+
+function resetErrors() {
+    const { taskNameMessage } = TASKS_DOM;
+    taskNameMessage.innerHTML = "";
+
+}
+function validateName(input) {
+    const taskNameRegex = /^[A-Za-z]+$/;
+    return taskNameRegex.test(input);
+}
+
+function raiseMessage(element, message) {
+    element.innerHTML = message;
+}
+
+function validateName2 () {
+
+    if (isError.task_name) return; 
+
+};
+
 
 
 function init() {
