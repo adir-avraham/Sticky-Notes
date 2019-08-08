@@ -43,7 +43,7 @@ function deleteTask(id) {
 
 function findIndex(data, id) {
     for (let index = 0; index < data.length; index++) {
-        if (data[index].task_name === id) {
+        if (data[index].task_id === id) {
             return index;
         }
     }
@@ -51,7 +51,7 @@ function findIndex(data, id) {
 
 
 function createTask(task) {
-    const { task_name, task_description, task_date, task_time } = task;
+    const { task_name, task_description, task_date, task_time, task_id } = task;
     
     const divElement = document.createElement("div");
 
@@ -82,7 +82,7 @@ function createTask(task) {
     const card_task_time = document.createElement("footer");
     card_task_time.innerText = task_time;
 
-    divElement.id = task_name;
+    divElement.id = task_id;
 
     divElement.append( card_task_name , card_task_description, card_task_date, card_task_time);
 
@@ -95,24 +95,15 @@ function deleteTaskHandler() {
 }
 
 
-function validateTaskName(name) {
-    return findIndex(arrayOfData, name);
-}
-
-
 document.querySelector("#addButton").addEventListener("click", saveTask);
 
 
 function saveTask() {
     const { task_name, task_description, task_date, task_time } = TASKS_DOM;
+
     if (!task_name.value || !task_description.value || !task_date.value || !task_time.value) {
         alert("Please fill out the form")
        return;
-    }
-    const result = validateTaskName(task_name.value);
-    if (result !== undefined) {
-        alert("Task Exist")
-        return;
     }
 
     arrayOfData.push(new Task(task_name.value, task_description.value, task_date.value, task_time.value))
@@ -132,6 +123,8 @@ function Task(_name, _description, _date, _time) {
     this.task_description = _description;
     this.task_date = _date;
     this.task_time = _time;
+    const rand = Math.round(Math.random() * 99999);
+    this.task_id = `note_${rand}`
 }
 
 
