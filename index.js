@@ -54,8 +54,11 @@ function createTask(task) {
     const { task_name, task_description, task_date, task_time } = task;
     
     const divElement = document.createElement("div");
+    
 
-    divElement.className = "mt-5 card-body card-hover sticky-note m-3 ml-5 col-lg-3";
+
+
+    divElement.className = "mt-5 card-body card-hover sticky-note m-3 ml-5 col-lg-3 fade-in";
     divElement.style = "max-width: 17rem";
     divElement.addEventListener("mouseover", function(){
     deleteButton.style.display = "inline-block";})      
