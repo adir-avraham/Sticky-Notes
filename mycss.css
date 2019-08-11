@@ -12,11 +12,11 @@ body {
     border-radius: 3px;
 }
 
-  .card-title {
+.card-title {
       margin-top: 0.7em;
   }
 
-  .sticky-note {
+.sticky-note {
     background-image: url("Images/sticky-note-png.png");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -28,13 +28,6 @@ body {
     margin-bottom: 0.8em;
 }
 
-.card-hover:hover {
-opacity: 0.7;
-transition: 0.5s;
-}
 
-.card-hover {
-    opacity: 1;
-} 
 
 
