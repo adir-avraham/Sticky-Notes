@@ -58,7 +58,7 @@ function createTask(task) {
 
 
 
-    divElement.className = "mt-5 card-body card-hover sticky-note m-3 ml-5 col-lg-3 fade-in";
+    divElement.className = "mt-5 card-body card-hover sticky-note m-3 ml-5 col-lg-3";
     divElement.style = "max-width: 17rem";
     divElement.addEventListener("mouseover", function(){
     deleteButton.style.display = "inline-block";})      
@@ -69,6 +69,12 @@ function createTask(task) {
     deleteButton.className = "btn btn-danger button-no-paddind far fa-trash-alt float-right";
     deleteButton.style.display = "none";  
     deleteButton.addEventListener("click", deleteTaskHandler);
+
+    const cButton = document.createElement("Button")
+    cButton.className = "btn btn-success button-no-paddind float-right cbtn far fa-check-square";
+
+    const ucButton = document.createElement("Button")
+    ucButton.className = "btn btn-success button-no-paddind float-right ucbtn far fa-square";
 
     const card_task_name = document.createElement("h3");
     card_task_name.innerText = task_name;
@@ -87,10 +93,20 @@ function createTask(task) {
 
     divElement.id = task_name;
 
-    divElement.append( card_task_name , card_task_description, card_task_date, card_task_time);
+    divElement.append( card_task_name , card_task_description, card_task_date, card_task_time, cButton, ucButton);
 
     return divElement;
 }
+
+$(document).ready(function () {
+    $(".cbtn").click(function () {
+        $(this.parentElement).fadeTo(1000, 0.4);
+    });
+    $(".ucbtn").click(function () {
+        $(this.parentElement).fadeTo(1000, 1);
+    });
+});
+
 
 
 function deleteTaskHandler() {
